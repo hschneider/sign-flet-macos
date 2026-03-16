@@ -1,9 +1,9 @@
 # sign-flet-macos
-**Sign Flet macOS Desktop Apps easily.**
+**Codesign Flet Desktop-Apps easily under macOS.**
 
 
 
-This script automates the codesign process for desktop apps under macOS.
+This script automates the codesign process for desktop-apps under macOS.
 
 Replace the `DEV_ID` with yours and call:
 
