@@ -8,7 +8,7 @@ This script automates the codesign process for desktop-apps under macOS.
 Replace the `DEV_ID` with yours and call:
 
 ```
-./sign-flet-macos PATH_TO_YOUR_APP
+./sign-flet-macos.sh PATH_TO_YOUR_APP
 ```
 
 To automate Notarization, check out:
