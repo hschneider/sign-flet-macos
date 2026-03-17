@@ -1,5 +1,5 @@
 # sign-flet-macos
-**Codesign Flet Desktop-Apps easily under macOS.**
+### Codesign Flet Desktop-Apps easily under macOS.
 
 
 This script signs the output of `flet build macos`.
