@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# sign-flet-macos 1.0.0
+# sign-flet-macos 1.0.1
 #
 # Signs Flet macOS desktop-app packages the right way :)
 #
@@ -9,6 +9,7 @@
 
 DEV_ID="Harald Schneider"   # <-- Your ID here.
 TARGET="${1:-.}"
+APP=$(basename "$TARGET" .app)
 
 if [ ! -e "$TARGET" ]; then
     echo "Error: Target '$TARGET' not found"
@@ -28,6 +29,14 @@ cat > "$ENTITLEMENTS" << 'EOF'
 </dict>
 </plist>
 EOF
+
+echo "----------------------------------------------"
+echo "Starting & closing app to catch bundle writes."
+echo "Please wait ..."
+echo "----------------------------------------------"
+open "${TARGET}"
+sleep 5
+osascript -e "quit app \"${APP}\""
 
 echo "---------------------------------"
 echo "Signing Framework libs ..."
