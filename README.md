@@ -4,7 +4,7 @@
 
 This script signs the output of `flet build macos`.
 
-Replace the `DEV_ID` with yours and call:
+Edit the script and replace the `DEV_ID` with yours, then call:
 
 ```
 flet build macos
