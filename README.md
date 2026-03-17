@@ -2,13 +2,13 @@
 **Codesign Flet Desktop-Apps easily under macOS.**
 
 
-
-This script automates the codesign process for desktop-apps under macOS.
+This script signs the output of `flet build` and automates the codesign process for desktop-apps under macOS.
 
 Replace the `DEV_ID` with yours and call:
 
 ```
-./sign-flet-macos.sh PATH_TO_YOUR_APP
+flet build
+./sign-flet-macos.sh build/macos/YOUR_APP.app
 ```
 
 To automate **Notarization**, check out:
