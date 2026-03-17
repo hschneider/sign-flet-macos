@@ -11,7 +11,7 @@ flet build macos
 sign-flet-macos build/macos/YOUR_APP.app
 ```
 
-To automate **Notarization**, check out:
+To automate **Notarization**, have a look at:
 
 https://github.com/hschneider/macos-sign-notarize
 
