@@ -7,7 +7,7 @@
 # (c)2026 Harald Schneider - marketmix.com
 #
 
-DEV_ID="Developer ID Application: Harald Schneider (83EVWAM95Q)"   # <-- Your ID here.
+DEV_ID="Developer ID Application: Harald Schneider (xxx)"   # <-- Your ID here.
 
 TARGET="${1:-.}"
 APP=$(basename "$TARGET" .app)
