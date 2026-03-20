@@ -1,13 +1,14 @@
 #!/bin/bash
 #
-# sign-flet-macos 1.0.1
+# sign-flet-macos 1.0.2
 #
 # Signs Flet macOS desktop-app packages the right way :)
 #
 # (c)2026 Harald Schneider - marketmix.com
 #
 
-DEV_ID="Harald Schneider"   # <-- Your ID here.
+DEV_ID="Developer ID Application: Harald Schneider (83EVWAM95Q)"   # <-- Your ID here.
+
 TARGET="${1:-.}"
 APP=$(basename "$TARGET" .app)
 
@@ -43,7 +44,7 @@ echo "Signing Framework libs ..."
 echo "---------------------------------"
 find "$TARGET" -type f -path "*Frameworks*" \( -iname '*.so' -o -iname '*.dylib' \) | while read f; do
     echo "Signing dylib: $f"
-    codesign -f -s "$DEV_ID" --entitlements "$ENTITLEMENTS" --options runtime "$f" 2>/dev/null || true
+    codesign -f --timestamp -s "$DEV_ID" --entitlements "$ENTITLEMENTS" --options runtime "$f" 2>/dev/null || true
 done
 
 echo "---------------------------------"
@@ -51,7 +52,7 @@ echo "Signing Python-Framework ..."
 echo "---------------------------------"
 find "$TARGET" -type f -path "*Python.framework*" -name "Python" | while read f; do
     echo "Signing Python: $f"
-    codesign -f -s "$DEV_ID" --entitlements "$ENTITLEMENTS" --options runtime "$f" 2>/dev/null || true
+    codesign -f --timestamp -s "$DEV_ID" --entitlements "$ENTITLEMENTS" --options runtime "$f" 2>/dev/null || true
 done
 
 echo "---------------------------------"
@@ -59,13 +60,13 @@ echo "Signing other Frameworks ..."
 echo "---------------------------------"
 find "$TARGET" -type d -name "*.framework" | while read f; do
     echo "Signing framework bundle: $f"
-    codesign -f -s "$DEV_ID" --entitlements "$ENTITLEMENTS" --options runtime "$f" 2>/dev/null || true
+    codesign -f --timestamp -s "$DEV_ID" --entitlements "$ENTITLEMENTS" --options runtime "$f" 2>/dev/null || true
 done
 
 echo "---------------------------------"
 echo "Signing main executable ..."
 echo "---------------------------------"
-codesign -f -s "$DEV_ID" --entitlements "$ENTITLEMENTS" --options runtime "$TARGET"
+codesign -f --timestamp -s "$DEV_ID" --entitlements "$ENTITLEMENTS" --options runtime "$TARGET"
 
 echo "---------------------------------"
 echo "Verifying signature ..."
