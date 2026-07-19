@@ -1,13 +1,13 @@
 #!/bin/bash
 #
-# sign-flet-macos 1.0.2
+# sign-flet-macos 1.0.3
 #
 # Signs Flet macOS desktop-app packages the right way :)
 #
 # (c)2026 Harald Schneider - marketmix.com
 #
 
-DEV_ID="Developer ID Application: Harald Schneider (xxx)"   # <-- Your ID here.
+DEV_ID="Developer ID Application: Harald Schneider (83EVWAM95Q)"   # <-- Your ID here.
 
 TARGET="${1:-.}"
 APP=$(basename "$TARGET" .app)
@@ -60,6 +60,14 @@ echo "Signing other Frameworks ..."
 echo "---------------------------------"
 find "$TARGET" -type d -name "*.framework" | while read f; do
     echo "Signing framework bundle: $f"
+    codesign -f --timestamp -s "$DEV_ID" --entitlements "$ENTITLEMENTS" --options runtime "$f" 2>/dev/null || true
+done
+
+echo "---------------------------------"
+echo "Signing Resources ..."
+echo "---------------------------------"
+find "$TARGET" -type f -path "*Resources*" \( -iname '*.so' -o -iname '*.dylib' \) | while read f; do
+    echo "Signing dylib: $f"
     codesign -f --timestamp -s "$DEV_ID" --entitlements "$ENTITLEMENTS" --options runtime "$f" 2>/dev/null || true
 done
 
