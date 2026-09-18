@@ -17,3 +17,11 @@ https://github.com/hschneider/macos-sign-notarize
 
 Drop me a star, if you like it.
 
+---
+This script is obsolete since Flet 1.0.
+
+Use it, if you are on Flet < 1.0 or as a fallback if you run into problems with builtin sign & notarize.
+
+Details here:
+- https://flet.dev/docs/publish/macos#code-signing
+- https://github.com/flet-dev/flet/pull/6702
